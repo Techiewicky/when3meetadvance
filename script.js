@@ -71,19 +71,19 @@ function toggleTimeSlot(tdElem) {
 document.getElementById("submitMeeting").addEventListener("click", async function() {
     const username = document.getElementById("user-name").value;
     const eventName = document.getElementById("event-name").value;
-    
     if (!username || !eventName) {
         alert('Please enter your name and the event name');
         return;
-    }
+    };
 
     const bodyPayload = {
         username: username,
         eventName: eventName,
         slots: Array.from(selectedTimeSlots)
-    };
+    }
 
-    const API_URL = 'https://jsonplaceholder.typicode.com/posts';
+    const API_URL = 'https://jsonplaceholder.typicode.com/posts'
+
         const response = await fetch(API_URL, {
             method: 'POST',
             body: JSON.stringify(bodyPayload),
@@ -92,8 +92,7 @@ document.getElementById("submitMeeting").addEventListener("click", async functio
             }
         });
         const data = await response.json();
-        console.log(`We got this back from the server:`, data);
-        alert("Event created successfully!");
-});
+        console.log(`We got this back from the server:, ${data}`)
+    })
 
-createTimeTable();
+    createTimeTable();
