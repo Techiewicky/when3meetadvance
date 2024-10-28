@@ -7,7 +7,7 @@ let endHour = 17;
 populateDropDownMenu(startTimeSelectElem, startHour);
 populateDropDownMenu(endTimeSelectElem, endHour);
 
-function populateDropDownMenu(selectElem, selectedValue) { 
+function populateDropDownMenu(selectElem, selectedValue) {
     for (let i = 0; i < 24; i++) {
         let optionElem = document.createElement("option");
         let hour = i % 12 === 0 ? 12 : i % 12;
@@ -71,6 +71,7 @@ function toggleTimeSlot(tdElem) {
 document.getElementById("submitMeeting").addEventListener("click", async function() {
     const username = document.getElementById("user-name").value;
     const eventName = document.getElementById("event-name").value;
+    
     if (!username || !eventName) {
         alert('Please enter your name and the event name');
         return;
@@ -93,11 +94,11 @@ document.getElementById("submitMeeting").addEventListener("click", async functio
         });
         const data = await response.json();
         console.log(`We got this back from the server:`, data);
+        alert("Event created successfully!");
     } catch (error) {
         console.error("Error posting data to server:", error);
+        alert("Failed to create event. Please try again.");
     }
-
-    createTimeTable();
 });
 
 createTimeTable();
