@@ -84,7 +84,6 @@ document.getElementById("submitMeeting").addEventListener("click", async functio
     };
 
     const API_URL = 'https://jsonplaceholder.typicode.com/posts';
-    try {
         const response = await fetch(API_URL, {
             method: 'POST',
             body: JSON.stringify(bodyPayload),
@@ -95,10 +94,6 @@ document.getElementById("submitMeeting").addEventListener("click", async functio
         const data = await response.json();
         console.log(`We got this back from the server:`, data);
         alert("Event created successfully!");
-    } catch (error) {
-        console.error("Error posting data to server:", error);
-        alert("Failed to create event. Please try again.");
-    }
 });
 
 createTimeTable();
